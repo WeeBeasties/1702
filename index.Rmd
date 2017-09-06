@@ -1,5 +1,5 @@
 --- 
-title: "General Education Course Registrations^[Report number 201702, DOI [10.17605/OSF.IO/6KFDV](https://doi.org/10.17605/OSF.IO/6KFDV)]"
+title: "General Education Course Registrations^[Report number 1702, DOI [10.17605/OSF.IO/6KFDV](https://doi.org/10.17605/OSF.IO/6KFDV)]"
 subtitle: "An Overview of Registration Patterns for Fall 2017"
 author: 
   - "Dr. Clifton Franklund"
@@ -11,7 +11,7 @@ output:
       after_body: disqus.html
 description: An analysis of course registration patterns for fall 2017. This report may be used to evaluate the overall participation of units in assessment and the distribution of assessment methods.
 documentclass: article
-github-repo: WeeBeasties/Registration_201708
+github-repo: WeeBeasties/1702
 link-citations: yes
 bibliography: references.bib
 site: bookdown::bookdown_site

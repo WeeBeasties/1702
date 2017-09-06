@@ -1,6 +1,6 @@
-book_filename: "Course Registrations, Fall 2017"
+book_filename: "Report-1702"
 chapter_name: ""
-repo: https://github.com/WeeBeasties/Registration_201708
+repo: https://github.com/WeeBeasties/1702
 output_dir: docs
 rmd_files:
   html: ["index.Rmd"]
@@ -8,4 +8,4 @@ rmd_files:
 clean: [packages.bib, bookdown.bbl]
 new_session: no
 comments: true
-edit: https://github.com/WeeBeasties/Registration_201708/blob/master/%s
+edit: https://github.com/WeeBeasties/1702/blob/master/%s
