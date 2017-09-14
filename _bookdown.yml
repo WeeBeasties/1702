@@ -3,7 +3,7 @@ chapter_name: ""
 repo: https://github.com/WeeBeasties/1702
 output_dir: docs
 rmd_files:
-  html: ["index.Rmd"]
+  html: ["index.Rmd","references.Rmd"]
   latex: ["index.Rmd"]
 clean: [packages.bib, bookdown.bbl]
 new_session: no

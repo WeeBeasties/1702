@@ -77,9 +77,10 @@ All of the de-identified data, analysis code, and documentation that constitute 
 
 ## Retrieving the registration data {#googlesheets -}  
 ```{R getData, echo=FALSE, message=FALSE, warning=FALSE}
-###########################################################
+#####################################################################
 # UNCOMMENT THIS BLOCK TO GET THE DATA FROM GOOGLE
-###########################################################
+# authentication may be required via a web browswer for access...
+#####################################################################
 myGoogleSheet <- gs_title("Core Competency Assessment  (Responses)")
 rawData <- myData <- gs_read(ss = myGoogleSheet, ws = "Form Responses 1")
 myData <- as.data.frame(rawData)
@@ -94,20 +95,23 @@ myData$MEASURE <- factor(myData$MEASURE, levels=rev(levels(myData$MEASURE)))
 
 write.csv(myData[,c(2,3,6)], file="data/registrations.csv", row.names = FALSE)
 
-###########################################################
+#####################################################################
 # UNCOMMENT THIS BLOCK TO READ THE CSV FILE FOR THE DATA
-###########################################################
+# personal identifying information has been removed...
+#####################################################################
 #myData <- read.csv("data/registrations.csv")
 #myData$COMPETENCY <- factor(myData$COMPETENCY, levels=rev(levels(myData$COMPETENCY)))
 #myData$MEASURE <- factor(myData$MEASURE, levels=rev(levels(myData$MEASURE)))
 ```
 
 ## Analysis {#analysis -}
+A total of `r length(myData$COMPETENCY)` registrations were completed as of `r format(Sys.Date(),format="%B %d, %Y")`. 
+
 
 # Results and Discussion {#results -}
 ## Summary statistics {#summary -}
 ## Histograms  {#histogram -}
-```{r competency, echo=FALSE}
+```{r competency, echo=FALSE, fig.cap="Distribution of course registrations by core competency."}
 # Plot of registrations by competency -------------------------------------
 competencyCounts <- myData %>%
 	group_by(COMPETENCY) %>%
@@ -119,7 +123,7 @@ ggplot(competencyCounts, aes(x=COMPETENCY, y=COUNT)) +
 	coord_flip()
 ```
 
-```{r measure, echo=FALSE}
+```{r measure, echo=FALSE, fig.cap="Distribution of course registrations by standardized measure."}
 # Plot of registrations by measure ----------------------------------------
 measureCounts <- myData %>%
 	group_by(MEASURE) %>%
@@ -130,3 +134,4 @@ ggplot(measureCounts, aes(x=MEASURE, y=COUNT)) +
 	theme_classic(base_size = 12) +
 	coord_flip()
 ```
+
