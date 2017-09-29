@@ -92,8 +92,9 @@ myData$COMPETENCY <- factor(myData$COMPETENCY, levels=rev(levels(myData$COMPETEN
 names(myData)[names(myData) == 'STANDARD MEASURE'] <- 'MEASURE'
 myData$MEASURE <- as.factor(myData$MEASURE)
 myData$MEASURE <- factor(myData$MEASURE, levels=rev(levels(myData$MEASURE)))
+myData <- myData[ ,-c(1,4,5,7,8)]
 
-write.csv(myData[,c(2,3,6)], file="data/registrations.csv", row.names = FALSE)
+write.csv(myData, file="data/registrations.csv", row.names = FALSE)
 
 #####################################################################
 # UNCOMMENT THIS BLOCK TO READ THE CSV FILE FOR THE DATA
@@ -107,9 +108,12 @@ write.csv(myData[,c(2,3,6)], file="data/registrations.csv", row.names = FALSE)
 ## Analysis {#analysis -}
 
 
-# Results and Discussion {#results -}
-## Summary statistics {#summary -}  
+# Results and Discussion {#results -}  
+
 A total of `r length(myData$COMPETENCY)` registrations have been completed as of `r format(Sys.Date(),format="%B %d, %Y")`. This includes a total of `r length(unique(myData$COURSE))` different courses.  
+
+## Summary statistics {#summary -}  
+
 
 ## Histograms  {#histogram -}
 ```{r competency, echo=FALSE, fig.cap="Distribution of course registrations by core competency."}
