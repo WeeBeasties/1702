@@ -107,7 +107,7 @@ write.csv(myData, file="docs/data/registrations.csv", row.names = FALSE)
 ```
 
 ## Data collection {#data -}
-All registration records for the fall of 2017 were collated and de-identified. The data file, 'registrations.csv', contains only the course name (e.g. BIOL 101), the core competency (e.g. Natural Sciences), and the standardized measure (e.g. Selected Response Exam). The datafile is [available here](http://reproducibleassessment.com/1u702/data/registrations.csv).
+All registration records for the fall of 2017 were collated and de-identified. The data file, 'registrations.csv', contains only the course name (e.g. BIOL 101), the core competency (e.g. Natural Sciences), and the standardized measure (e.g. Selected Response Exam). The datafile is [available here](data/registrations.csv).
 
 # Results and Discussion {#results -}  
 
