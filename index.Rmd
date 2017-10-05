@@ -95,6 +95,7 @@ myData$MEASURE <- factor(myData$MEASURE, levels=rev(levels(myData$MEASURE)))
 myData <- myData[ ,-c(1,4,5,7,8)]
 
 write.csv(myData, file="data/registrations.csv", row.names = FALSE)
+write.csv(myData, file="docs/data/registrations.csv", row.names = FALSE)
 
 #####################################################################
 # UNCOMMENT THIS BLOCK TO READ THE CSV FILE FOR THE DATA
@@ -105,8 +106,8 @@ write.csv(myData, file="data/registrations.csv", row.names = FALSE)
 #myData$MEASURE <- factor(myData$MEASURE, levels=rev(levels(myData$MEASURE)))
 ```
 
-## Analysis {#analysis -}
-
+## Data collection {#data -}
+All registration records for the fall of 2017 were collated and de-identified. The data file, 'registrations.csv', contains only the course name (e.g. BIOL 101), the core competency (e.g. Natural Sciences), and the standardized measure (e.g. Selected Response Exam). The datafile is [available here]("./data/registrations.csv").
 
 # Results and Discussion {#results -}  
 
