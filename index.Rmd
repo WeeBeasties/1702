@@ -1,5 +1,5 @@
 --- 
-title: "General Education Course Registrations^[Report number 1702, DOI [10.17605/OSF.IO/6KFDV](https://doi.org/10.17605/OSF.IO/6KFDV)]"
+title: "General Education Course Registrations^[Report number 1702, DOI [10.17605/OSF.IO/MRJBD](https://doi.org/10.17605/OSF.IO/MRJBD)]"
 subtitle: "An Overview of Registration Patterns for Fall 2017"
 author: 
   - "Dr. Clifton Franklund"
@@ -42,9 +42,7 @@ library(pander)         # used to report session settings
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque tortor ac turpis congue venenatis. Curabitur congue justo est, non feugiat massa euismod sit amet. Fusce tincidunt, sapien in malesuada tempus, sem mi interdum turpis, in finibus sem nisl sed ex. Mauris in tristique nisl. Nunc pellentesque metus et velit aliquam, eu rhoncus diam condimentum. Quisque nec libero at odio tempor aliquam. Fusce at lacus porttitor, lobortis nisl nec, commodo tellus. Phasellus interdum sapien varius ipsum consectetur tincidunt. Aenean posuere turpis at efficitur lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque tortor ac turpis congue venenatis. Curabitur congue justo est, non feugiat massa euismod sit amet. Fusce tincidunt, sapien in malesuada tempus, sem mi interdum turpis, in finibus sem nisl sed ex. Mauris in tristique nisl. Nunc pellentesque metus et velit aliquam, eu rhoncus diam condimentum. Quisque nec libero at odio tempor aliquam. Fusce at lacus porttitor, lobortis nisl nec, commodo tellus. Phasellus interdum sapien varius ipsum consectetur tincidunt. Aenean posuere turpis at efficitur lobortis. 
 
 # Introduction {#introduction -}
-## Standardized scoring {#standards -} 
-## VALUE rubrics for individuals {#VALIE -}
-## Need thresholds for courses {#thresholds -}
+
 
 # Methods {#methods -}
 
@@ -110,19 +108,26 @@ write.csv(myData, file="docs/data/registrations.csv", row.names = FALSE)
 All registration records for the fall of 2017 were collated and de-identified. The data file, 'registrations.csv', contains only the course name (e.g. BIOL 101), the core competency (e.g. Natural Sciences), and the standardized measure (e.g. Selected Response Exam). The datafile is [available here](data/registrations.csv).
 
 # Results and Discussion {#results -}  
-
-A total of `r length(myData$COMPETENCY)` registrations have been completed as of `r format(Sys.Date(),format="%B %d, %Y")`. This includes a total of `r length(unique(myData$COURSE))` different courses.  
-
-## Summary statistics {#summary -}  
-
-
-## Histograms  {#histogram -}
-```{r competency, echo=FALSE, fig.cap="Distribution of course registrations by core competency."}
-# Plot of registrations by competency -------------------------------------
+```{R summarizeData, echo=FALSE, message=FALSE, warning=FALSE}
 competencyCounts <- myData %>%
 	group_by(COMPETENCY) %>%
 	summarise(COUNT=n())
 
+measureCounts <- myData %>%
+	group_by(MEASURE) %>%
+	summarise(COUNT=n())
+```
+ 
+A total of `r length(myData$COMPETENCY)` registrations have been completed as of `r format(Sys.Date(),format="%B %d, %Y")`. This includes a total of `r length(unique(myData$COURSE))` different courses. The distribution of the registrations between the eight core competencies is shown in figure \@ref(fig:competency).
+
+
+- A total of `r sum(measureCounts[11:14, 2])` exams were registered (`r round(sum(measureCounts[11:14, 2])/length(myData$COMPETENCY)*100,1)`%).  
+- A total of `r sum(measureCounts[4:10, 2])` student products were registered (`r round(sum(measureCounts[4:10, 2])/length(myData$COMPETENCY)*100,1)`%).  
+- A total of `r sum(measureCounts[1:3, 2])` student performances were registered (`r round(sum(measureCounts[1:3, 2])/length(myData$COMPETENCY)*100,1)`%).  
+
+
+```{r competency, echo=FALSE, fig.cap="Distribution of course registrations by core competency."}
+# Plot of registrations by competency -------------------------------------
 ggplot(competencyCounts, aes(x=COMPETENCY, y=COUNT)) +
 	geom_bar(stat = "identity", fill = "Firebrick") +
 	theme_classic(base_size = 14) +
@@ -131,10 +136,6 @@ ggplot(competencyCounts, aes(x=COMPETENCY, y=COUNT)) +
 
 ```{r measure, echo=FALSE, fig.cap="Distribution of course registrations by standardized measure."}
 # Plot of registrations by measure ----------------------------------------
-measureCounts <- myData %>%
-	group_by(MEASURE) %>%
-	summarise(COUNT=n())
-
 ggplot(measureCounts, aes(x=MEASURE, y=COUNT)) +
 	geom_bar(stat = "identity", fill = "Firebrick") +
 	theme_classic(base_size = 12) +
