@@ -18,12 +18,12 @@ blockquote p {
 	display: inline;
 }
 
-question {
+.question {
 	background: url(art/question.png) no-repeat;
 	color: #a5a4a4;
 	font-style: italic;
 	margin: 30px;
-	padding: 30px 30px 30px 50px;
+	padding: 20px 20px 20px 40px;
 }
 
 .book .book-body .page-wrapper .page-inner section.normal .rules .info {
