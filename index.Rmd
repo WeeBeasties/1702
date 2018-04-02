@@ -36,10 +36,10 @@ library(pander)         # used to report session settings
 
 
 # Abstract {#abstract -}
-> "Assessment is not a spreadsheet; it's a conversation."
+> _Assessment is not a spreadsheet; it's a conversation._
 > --- Irmeli Halinen
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque tortor ac turpis congue venenatis. Curabitur congue justo est, non feugiat massa euismod sit amet. Fusce tincidunt, sapien in malesuada tempus, sem mi interdum turpis, in finibus sem nisl sed ex. Mauris in tristique nisl. Nunc pellentesque metus et velit aliquam, eu rhoncus diam condimentum. Quisque nec libero at odio tempor aliquam. Fusce at lacus porttitor, lobortis nisl nec, commodo tellus. Phasellus interdum sapien varius ipsum consectetur tincidunt. Aenean posuere turpis at efficitur lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque tortor ac turpis congue venenatis. Curabitur congue justo est, non feugiat massa euismod sit amet. Fusce tincidunt, sapien in malesuada tempus, sem mi interdum turpis, in finibus sem nisl sed ex. Mauris in tristique nisl. Nunc pellentesque metus et velit aliquam, eu rhoncus diam condimentum. Quisque nec libero at odio tempor aliquam. Fusce at lacus porttitor, lobortis nisl nec, commodo tellus. Phasellus interdum sapien varius ipsum consectetur tincidunt. Aenean posuere turpis at efficitur lobortis. 
+In an effort to get uniform and systematic assessment data, all faculty teaching courses with General Education attributes were asked to voluntarily register. These registrations were facilitated using a Google form and the data were gathered in a Google sheet. This document summarizes the results of those activities.
 
 # Introduction {#introduction -}
 
@@ -123,7 +123,7 @@ measureCounts <- myData %>%
 	summarise(COUNT=n())
 ```
  
-A total of `r length(myData$COMPETENCY)` registrations have been completed as of `r format(Sys.Date(),format="%B %d, %Y")`. This includes a total of `r length(unique(myData$COURSE))` different courses. The distribution of the registrations between the eight core competencies is shown in figure \@ref(fig:competency).
+A total of `r length(myData$COMPETENCY)` registrations were submitted for the Fall 2017 semester. This represented the efforts of `r length(unique(myData$NAME))` different faculty members and included a total of `r length(unique(myData$COURSE))` different courses. The distribution of the registrations between the eight core competencies is shown in figure \@ref(fig:competency).
 
 ```{r competency, echo=FALSE, fig.cap="Distribution of course registrations by core competency."}
 # Plot of registrations by competency -------------------------------------
