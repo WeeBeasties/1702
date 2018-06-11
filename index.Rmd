@@ -39,10 +39,14 @@ library(pander)         # used to report session settings
 > _Assessment is not a spreadsheet; it's a conversation._
 > --- Irmeli Halinen
 
-In an effort to get uniform and systematic assessment data, all faculty teaching courses with General Education attributes were asked to voluntarily register. These registrations were facilitated using a Google form and the data were gathered in a Google sheet. This document summarizes the results of those activities.
+In an effort to get uniform and systematic assessment data, all faculty teaching courses with General Education attributes were asked to voluntarily register. These registrations were facilitated using a Google form and the data were gathered in a Google sheet. This document summarizes the results of those activities for the fall semester of 2017. Here are links to different versions of this report:  
+
+* [Multi-part HTML](http://reproducibleassessment.com/1702)  
+* [Single-page HTML](http://reproducibleassessment.com/1702/Report-1702.html)  
+* [PDF](http://reproducibleassessment.com/1702/Report-1702.pdf)  
 
 # Introduction {#introduction -}
-
+This is the first semester of assessing our revised General Education program at Ferris State University. To simplify and automate data reporting, TracDat assignments will be sent to all General Education instructors. Each faculty member will assess FLO3 this semester. Each can select any of the 14 pre-defined measures to evaluate their student's work. With 10 competencies (2 diversity and 2 communication), each with 14 measures, there are 140 different possibilities for assignments. To keep all of this straight, a registration process has been created. This report summarizes the course registrations that were made in fall 2017.
 
 # Methods {#methods -}
 
@@ -50,7 +54,7 @@ In an effort to get uniform and systematic assessment data, all faculty teaching
 Data provenance refers to a system that permits tracking of the origin, movement, modification, and utilization of data sets [@Buneman2001]. The provenance of General Education data will be explicitly declared to facilitate the reproducibility and extensibility of these studies.
 
 ### Location of public website files {-}
-All files related to this report can be found online at the Open Science Framework [@Nosek2012]. This site contains all of the files needed to reproduce this report from the de-identified data set. The site's url is [https://osf.io/t6u8m/](https://osf.io/t6u8m/).
+All files related to this report can be found online at the Open Science Framework [@Nosek2012]. This site contains all of the files needed to reproduce this report from the de-identified data set. The site's url is [https://osf.io/t6u8m/](https://osf.io/mrjbd/).
 
 ### Session information {-}
 This report was written using RStudio [@Rstudio] and the R statistical programming language [@R]. These products are free to download for PC, Macintosh, and Linux operating systems. The following information pertains to the session parameters used to generate this report. If you have trouble reproducing this report, it may be due to different session parameters. You may contact [Dr. Franklund](mailto:CliftonFranklund@ferris.edu) if you need assistance.
@@ -123,7 +127,7 @@ measureCounts <- myData %>%
 	summarise(COUNT=n())
 ```
  
-A total of `r length(myData$COMPETENCY)` registrations were submitted for the Fall 2017 semester. This represented the efforts of `r length(unique(myData$NAME))` different faculty members and included a total of `r length(unique(myData$COURSE))` different courses. The distribution of the registrations between the eight core competencies is shown in figure \@ref(fig:competency).
+A total of `r length(myData$COMPETENCY)` registrations were submitted for the Fall 2017 semester. This represented the efforts of `r length(unique(myData$NAME))` different faculty members and included a total of `r length(unique(myData$COURSE))` different courses. The distribution of the registrations between the eight core competencies is shown in figure \@ref(fig:competency). As can be seen, at least 16 registrations were made for each of the competencies. Culture and Diversity had the most registrations, while Collaboration and Problem Solving had the fewest.
 
 ```{r competency, echo=FALSE, fig.cap="Distribution of course registrations by core competency."}
 # Plot of registrations by competency -------------------------------------
@@ -133,6 +137,12 @@ ggplot(competencyCounts, aes(x=COMPETENCY, y=COUNT)) +
 	theme_classic(base_size = 14) +
 	coord_flip()
 ```
+
+```{block, type='question'}
+Do you think that this represents a sufficient number of registrations for the semester? How can we improve the participation in Collaboration and Problem Solving?
+```
+
+The registrations were further broken down by the types of measures being employed by the faculty. Using our fourteen standard measures...
 
 - A total of `r sum(measureCounts[11:14, 2])` exams were registered (`r round(sum(measureCounts[11:14, 2])/length(myData$COMPETENCY)*100,1)`%).  
 - A total of `r sum(measureCounts[4:10, 2])` student products were registered (`r round(sum(measureCounts[4:10, 2])/length(myData$COMPETENCY)*100,1)`%).  
@@ -151,6 +161,11 @@ ggplot(measureCounts, aes(x=MEASURE, y=COUNT)) +
 Do you think that there are too many exams in this mix? What is the desired balance between exams, products, and performances for General Education?
 ```
 
+Now that our first round of registrations has been completed, I would appreciate some feedback.
 
+```{block, type='question'}
+Was this overly difficult or confusing?   
+How can the process be improved for future semesters?
+```
 
 
